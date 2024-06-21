@@ -42,7 +42,7 @@ def download_file(node_host, node_port, filename):
             file_data_bytes = base64.b64decode(file_data)
             with open(filename, 'wb') as f:
                 f.write(file_data_bytes)
-            return f"File '{filename}' downloaded successfully."
+            return f"File '{filename}' download completo!."
     except xmlrpc.client.Fault as fault:
         return f"XML-RPC Fault: {fault.faultString} (code: {fault.faultCode})"
     except xmlrpc.client.ProtocolError as err:
@@ -72,14 +72,14 @@ def start_node(node_host, node_port, edge_node_host, edge_node_port):
     register_with_edge_node(edge_node_host, edge_node_port, node_host, node_port)
 
 if __name__ == "__main__":
-    node_host = 'localhost'
+    node_host = '35.222.83.121'
     node_port = 8002
-    edge_node_host = 'localhost'
+    edge_node_host = '35.222.83.121'
     edge_node_port = 8000
     start_node(node_host, node_port, edge_node_host, edge_node_port)
     
     while True:
-        filename = input("Enter the name of the file to download (or 'exit' to quit): ")
+        filename = input("Enter the file name: ")
         if filename.lower() == 'exit':
             break
         
